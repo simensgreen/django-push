@@ -1,73 +1,64 @@
-body {
-    height: 100%;
-    background: rgba(0, 0, 0, 0.87);
-    font-family: 'PT Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+
+:root {
+    box-sizing: border-box;
+    --primary-color: #2A4765;
+    font-size: 1.5rem;
 }
 
-div {
-    height: 100%;
-    display: flex;
+*, ::before, ::after {
+    box-sizing: inherit;
+    border-radius: .3rem;
+}
+
+body {
+    background-color: #EEE;
     align-items: center;
-    justify-content: center;
+    font-family: 'Raleway', sans-serif;
 }
 
 form {
+    margin: 0 auto;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 35%;
-    margin: 10% auto;
 }
 
-form > h3 {
-    font-size: 17px;
-    font-weight: bold;
-    margin: 15px 0;
-    color: orangered;
-    text-transform: uppercase;
+form > * + * {
+    margin-top: 1em;
 }
 
-form > .error {
-    margin: 0;
-    font-size: 15px;
-    font-weight: normal;
-    color: orange;
-    opacity: 0.7;
+.logo {
+    background-color: var(--primary-color);
 }
 
-form > input, form > textarea {
-    border: 3px solid orangered;
-    box-shadow: unset;
-    padding: 13px 12px;
-    margin: 12px auto;
-    width: 80%;
-    font-size: 13px;
-    font-weight: 500;
+.logo > img {
+    display: block;
+    max-width: 30%;
+    margin: 5px auto 0 auto;
 }
 
-form > input:focus, form > textarea:focus {
-    border: 3px solid orangered;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
-    outline: unset;
+label {
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-color);
 }
 
-form > button {
-    justify-self: center;
-    padding: 12px 25px;
-    border-radius: 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    background: orangered;
+input, textarea {
+    font-size: .9em;
+    border-radius: .1em;
+}
+
+button {
     color: white;
+    padding: .5em 1.5em;
     border: none;
-    font-size: 14px;
-    letter-spacing: -0.1px;
-    cursor: pointer;
+    background-color: var(--primary-color);
+    font-size: 1.2em;
 }
 
-form > button:disabled {
-    background: dimgrey;
-    cursor: not-allowed;
+button:disabled {
+    background-color: #EEE;
+    border: solid 1px var(--primary-color);
+    color: var(--primary-color);
 }
-

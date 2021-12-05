@@ -22,7 +22,7 @@ from django.views.generic import TemplateView
 from .views import home, send_push
 
 urlpatterns = [
-                  path('', home),
+                  path('', home, name="home"),
                   path('send_push', send_push),
                   path('admin/', admin.site.urls),
                   path('webpush/', include('webpush.urls')),

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -10,21 +10,24 @@
     {% if user.id %}
         <meta name="user_id" content="{{ user.id }}">
     {% endif %}
-    <title>Web Push</title>
+    <title>СТИС Уведомления</title>
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
     <link href="{% static '/css/styles.css' %}" rel="stylesheet">
 </head>
 
 <body>
-<div>
-    <form id="send-push__form">
-        <h3 class="header">Send a push notification</h3>
-        <p class="error"></p>
-        <input type="text" name="head" placeholder="Header: Your favorite airline 😍">
-        <textarea name="body" id="" cols="30" rows="10" placeholder="Body: Your flight has been cancelled 😱😱😱"></textarea>
-        <button>Send Me</button>
-    </form>
-</div>
+<form id="send-push__form">
+    <div class="logo">
+        <img src="http://ftp.stis.su/assets/stis/images/logo.jpg" alt="logo">
+    </div>
+    <label>Заголовок:
+        <input type="text" name="head" placeholder="Уведомление" id="title">
+    </label>
+    <label>Сообщение:
+        <textarea name="body" cols="30" rows="10" placeholder="Текст уведомления" id="body"></textarea>
+    </label>
+    <button class="send" id="submitBtn">Отправить</button>
+</form>
 <script src="{% static '/js/registerSw.js' %}"></script>
 <script src="{% static '/js/site.js' %}"></script>
 </body>

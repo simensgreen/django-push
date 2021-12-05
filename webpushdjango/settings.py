@@ -19,10 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mxxyic-3k(g_q7=r_)r=#6u@@imjdii(o=fm(ye=7*)yj$k7!6'
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -97,15 +97,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 WEBPUSH_SETTINGS = {
-    "VAPID_PUBLIC_KEY": "BAjcxMOWBmY1QZesO2jNpBjUSlnANLa6L2Dyn9KEPAPWaif1qzlOFFH0e4DqzubxzfY6HzOhIWag6a6cPDtJO7Q",
-    "VAPID_PRIVATE_KEY": "WV8gVjS-DIW-EOYrpKSlB2a8ol-fCWIublSVv2InQBQ",
-    "VAPID_ADMIN_EMAIL": "richyafro@gmail.com"
+    "VAPID_PUBLIC_KEY": os.environ['VAPID_PUBLIC_KEY'],
+    "VAPID_PRIVATE_KEY": os.environ['VAPID_PRIVATE_KEY'],
+    "VAPID_ADMIN_EMAIL": os.environ['VAPID_ADMIN_EMAIL']
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-Ru'
 
 TIME_ZONE = 'UTC'
 
