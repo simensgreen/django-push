@@ -1,52 +1,43 @@
-const showNotAllowed = (message) => {
-    const button = document.querySelector('form>button');
-    button.innerHTML = `${message}`;
-    button.setAttribute('disabled', 'true');
-};
-
-
 function urlB64ToUnit8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
+        .replace(/-/g, '+')
         .replace(/_/g, '/');
 
     const rawData = window.atob(base64);
     const outputArray = new Uint8Array(rawData.length);
-    const outputData = outputArray.map((output, index) => rawData.charCodeAt(index));
-
-    return outputData;
+    return outputArray.map((output, index) => rawData.charCodeAt(index));
 }
 
 
-const registerSw = async () => {
+async function registerSw() {
     if ('serviceWorker' in navigator) {
         const reg = await navigator.serviceWorker.register('sw.js');
         initialiseState(reg)
 
     } else {
-        showNotAllowed("You can't send push notifications")
+        alert("Не поддерживается воркер")
     }
-};
+}
 
 
-const initialiseState = (reg) => {
+async function initialiseState(reg) {
     if (!reg.showNotification) {
-        showNotAllowed('Showing notifications isn\'t supported');
+        alert("Уведомления не поддерживаются")
         return
     }
     if (Notification.permission === 'denied') {
-        showNotAllowed('Вы заперетили отправлять вам уведомления');
+        alert('Вы заперетили отправлять вам уведомления')
         return
     }
     if (!'PushManager' in window) {
-        showNotAllowed("Push isn't allowed in your browser");
+        alert("В вашем браузере отсутствует поддержка push")
         return
     }
     subscribe(reg);
 }
 
-const subscribe = async (reg) => {
+async function subscribe(reg) {
     const subscription = await reg.pushManager.getSubscription();
     if (subscription) {
         sendSubData(subscription);
@@ -63,9 +54,9 @@ const subscribe = async (reg) => {
 
     const sub = await reg.pushManager.subscribe(options);
     sendSubData(sub)
-};
+}
 
-const sendSubData = async (subscription) => {
+async function sendSubData(subscription) {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
     const data = {
         status_type: 'subscribe',
@@ -84,10 +75,10 @@ const sendSubData = async (subscription) => {
     });
 
     handleResponse(res);
-};
+}
 
-const handleResponse = (res) => {
+async function handleResponse(res) {
     console.log(res.status);
-};
+}
 
 registerSw();
