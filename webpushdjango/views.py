@@ -3,6 +3,7 @@ import json
 from django.conf import settings
 from django.http.response import JsonResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 from webpush import send_group_notification
 
@@ -16,6 +17,7 @@ def home(request):
 
 
 @require_POST
+@csrf_exempt
 def send_push(request):
     try:
         body = request.body
