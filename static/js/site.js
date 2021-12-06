@@ -18,12 +18,12 @@ submitBtn.addEventListener('click', async function (_) {
         }
     });
     if (res.status === 200) {
-        submitBtn.innerText = 'Подождите';
+        submitBtn.innerText = 'Уведомление отправлено';
         submitBtn.disabled = true
         setTimeout(function () {
             submitBtn.innerText = 'Отправить';
             submitBtn.disabled = false
-        }, 2000)
+        }, 10000)
         titleInput.value = '';
         bodyArea.value = '';
     } else {

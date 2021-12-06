@@ -7,7 +7,7 @@ self.addEventListener('push', function (event) {
     event.waitUntil(
         self.registration.showNotification(head, {
             body: body,
-            icon: 'http://ftp.stis.su/assets/stis/images/logo.jpg'
+            icon: 'simensgreen.online/static/img/logo.jpg'
         })
     );
 });
